@@ -6,12 +6,12 @@ import mediapipe as mp
 from backend.camera_stream import process_frame
 
 st.set_page_config(
-    page_title="Sign Language Detection",
+    page_title="Hand Gesture Detection",
     page_icon = "🤟",
     layout="wide"
 )
 
-st.title("🤟 Sign Language Detection")
+st.title("🤟 Hand Gesture Detection")
 
 col1 , col2 = st.columns([3,1])
 

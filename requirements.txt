@@ -4,3 +4,5 @@ opencv-python
 av
 streamlit-webrtc
 numpy
+edge-tts
+playsound==1.2.2

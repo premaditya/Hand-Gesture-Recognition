@@ -10,7 +10,7 @@ def create_hand_landmarker():
 
     options = HandLandmarkerOptions(
         base_options=BaseOptions(
-            model_asset_path=r"C:\Users\prema\Desktop\Sign_Language\Models\hand_landmarker.task"
+            model_asset_path=r"Models\hand_landmarker.task"
         ),
         running_mode=VisionRunningMode.VIDEO,
         num_hands=1,

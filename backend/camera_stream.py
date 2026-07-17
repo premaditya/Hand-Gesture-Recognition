@@ -4,6 +4,7 @@ import mediapipe as mp
 from backend.hand_landmarker import create_hand_landmarker
 from backend.gesture_rules import detect_gesture
 from backend.drawing_utils import draw_text, draw_landmarks
+from backend.speaker import speak
 
 #--------- Create Hand Landmark once ---------
 
@@ -22,6 +23,8 @@ def process_frame(frame):
     global current_sign
     global stable_count
 
+    print("Frame Received")
+
     # Convert BGR to RGB
     rgb = cv.cvtColor(frame, cv.COLOR_BGR2RGB)
 
@@ -30,6 +33,8 @@ def process_frame(frame):
         image_format=mp.ImageFormat.SRGB,
         data=rgb
     )
+
+    print("Running MediaPipe Detection")
 
     # Detect hand landmarks
     results = landmarker.detect_for_video(
@@ -42,26 +47,30 @@ def process_frame(frame):
 
     # If hand detected
     if results.hand_landmarks:
+        print("Hand Detected")
 
-        # Draw skeleton
+        print("Drawing Landmarks")
         frame = draw_landmarks(
             frame,
             results.hand_landmarks
         )
 
-        # Use the first hand
+        print("Getting First Hand")
         hand = results.hand_landmarks[0]
 
-        # Detect gesture
+        print("Detecting Gesture")
         sign = detect_gesture(hand)
+        print(f"Detected Gesture: {sign}")
 
-        # Draw gesture name
+        print("Drawing Text")
         frame = draw_text(
             frame,
             sign
         )
 
-        from backend.speaker import speak
+        
+
+        print("Checking Stability")
 
         # Stabilize gesture
         if sign == current_sign:
@@ -70,10 +79,18 @@ def process_frame(frame):
             current_sign = sign
             stable_count = 1
 
+        print(f"Stable Count: {stable_count}")
+
         if stable_count == STABLE_FRAMES:
+            print("Calling speak()")
             speak(sign)
+            print("speak() Finished")
+
     else:
+        print("No Hand Detected")
         current_sign = "UNKNOWN"
         stable_count = 0
+
+    print("Returning Frame\n")
 
     return frame
