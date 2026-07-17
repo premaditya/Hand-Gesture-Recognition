@@ -49,7 +49,7 @@ Hand_Gesture_Recognition/
 Clone the repository
 
 ```bash
-git clone <YOUR_GITHUB_REPO_LINK>
+git clone (https://github.com/premaditya/Hand-Gesture-Recognition)
 ```
 
 Install dependencies
