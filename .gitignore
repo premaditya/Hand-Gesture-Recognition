@@ -1,0 +1,57 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Python virtual environments
+venv/
+env/
+.venv/
+ENV/
+drowsy/
+sign/
+mouse/
+# VS Code
+.vscode/
+
+# PyCharm
+.idea/
+
+# Jupyter Notebook
+.ipynb_checkpoints/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Python distribution / packaging
+build/
+dist/
+*.egg-info/
+
+# Logs
+*.log
+
+# pytest
+.pytest_cache/
+
+# mypy
+.mypy_cache/
+
+# Temporary files
+*.tmp
+*.temp
+
+# Environment variables
+.env
+
+# Streamlit cache
+.streamlit/secrets.toml
+
+# Generated output folders
+outputs/
+captured_frames/
+saved_videos/
+
+# ZIP files
+*.zip
